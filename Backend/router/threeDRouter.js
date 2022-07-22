@@ -35,36 +35,7 @@ router.get('/getall',(req,res) => {
     // res.send(' user router'); 
     
 })
-// agar ham koi mail bheje to wo exist kr rha h ki ni, ni kr rha hoga to empty  array behejega
-router.get('/checkmail/:email',(req,res)=>{
-    // to fetch client data from  get request
-    console.log(req.params.email);
-    // if we find only one then we use findOne() it find first element otherwise find all element then we use find()
-    Model.findOne({email : req.params.email})
-    .then((result) => {
-        console.log(result);
-        res.json(result);
-    }).catch((err) => {
-        console.log(err);
-        res.json(err);
-        
-    });
 
-})
-
-
-router.get('/getbyid/:userid',(req,res)=>{
-    Model.findById(req.params.userid)
-    .then((result) => {
-        res.json(result);
-        
-    }).catch((err) => {
-        console.log(err);
-        res.json(err);
-    });
-
-})
-// findByOne is also use when id is not want to delete
 router.delete('/delete/:userid',(req,res)=>{
     Model.findByIdAndDelete(req.params.userid)
     .then((result) => {

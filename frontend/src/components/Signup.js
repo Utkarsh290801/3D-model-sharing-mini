@@ -3,15 +3,44 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
-const SigninCopy = () => {
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+const Signup = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const signup = {
     username: "",
     email: "",
     password: "",
   };
-  const userSubmit = (formdata) => {
+  const userSubmit = async(formdata) => {
     console.log(formdata);
+    const response= await fetch( 'http://localhost:5000/user/add',{
+      method : 'POST',
+        body : JSON.stringify(formdata),
+        headers:{
+          "Content-Type" : "application/json",
+         }
+        })
+        if(response.status===200){
+          console.log(response.status);
+          console.log('success')
+          Swal.fire({
+                icon : "success",
+                   title:"Well Done",
+                   text:'You have done a wonderful job !! 👍👍'
+               })     
+               navigate('/login');                      
+  
+        } else{
+          console.log(response.status);
+          console.log('something went wrong')
+          Swal.error({
+            icon : "error",
+               title:"OOPS",
+               text:'!! something went wrong!!'
+           })     
+        }      
   };
   const formSchema = Yup.object().shape({
     username: Yup.string()
@@ -151,4 +180,4 @@ const SigninCopy = () => {
   );
 };
 
-export default SigninCopy;
+export default Signup;

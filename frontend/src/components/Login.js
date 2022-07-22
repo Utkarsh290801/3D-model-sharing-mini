@@ -2,18 +2,40 @@ import React, { useState } from "react";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Formik } from "formik";
 
-import { EmailOutlined,  Visibility, VisibilityOff } from "@mui/icons-material";
+import { EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
+import Swal from "sweetalert2";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const signin = {
-    
+  const loginform = {
     email: "",
     password: "",
   };
-  const userSubmit = (formdata) => {
+  const loginSubmit = (formdata) => {
     console.log(formdata);
+    fetch("http://localhost:5000/user/authenticate", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Login Success!!👍",
+        });
+      } else if (res.status === 300) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Login Failed!!👍",
+        });
+      }
+    });
   };
- 
+
   return (
     <div className="container-fluid bg-dark">
       <div className="row">
@@ -38,35 +60,27 @@ const Login = () => {
           <div className="signup-cont">
             <div className="">
               <div className="col-md-6 col-sm-6 mx-auto">
-        <button className="btn btn-success w-100 mt-2">Continue with Google</button>
-        <button className="btn btn-primary w-100 mt-4">Continue with Facebook</button>
+                <button className="btn btn-success w-100 mt-2">
+                  Continue with Google
+                </button>
+                <button className="btn btn-primary w-100 mt-4">
+                  Continue with Facebook
+                </button>
                 <div className="">
                   <div className="card-body">
                     <h4 style={{ textAlign: "center", marginTop: "2%" }}>
-                      <i style={{top:''}}>OR</i>
+                      <i style={{ top: "" }}>OR</i>
                     </h4>
                     <hr className="mb-4" />
                     <h4 style={{ textAlign: "center" }}>Login</h4>
-                    <Formik
-                      initialValues={signin}
-                      onSubmit={userSubmit}
-                      
-                    >
-                      {({
-                        values,
-                        handleChange,
-                        handleSubmit,
-                        errors,
-                        touched,
-                      }) => (
+                    <Formik initialValues={loginform} onSubmit={loginSubmit}>
+                      {({ values, handleChange, handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
-                          
                           <TextField
                             label="Email"
                             variant="standard"
                             className="w-100 mb-3"
                             id="email"
-                            s
                             InputProps={{
                               endAdornment: (
                                 <InputAdornment position="end">
@@ -76,7 +90,6 @@ const Login = () => {
                             }}
                             onChange={handleChange}
                             value={values.email}
-                            
                           />
                           <TextField
                             label="Password"
@@ -103,7 +116,8 @@ const Login = () => {
                             }}
                             onChange={handleChange}
                             value={values.password}
-                            />
+                          />
+
                           <Button type="submit" variant="contained" fullWidth>
                             {" "}
                             Sign Up
