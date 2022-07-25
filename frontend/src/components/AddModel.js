@@ -45,10 +45,19 @@ const AddModel = () => {
     }
   return (
     <div>
-      <h1>AddModel</h1>
+    
+      <div className="container-fluid pt-3 bg-dark">
+      <div className="row">
+     
+            <div className="">
+              <div className="col-md-6 col-sm-6 mx-auto">
+
+              <div className="card">
+                  <div className="card-body">
       <Formik initialValues={AddForm} onSubmit={addSubmit}>
         {({ values, handleSubmit, handleChange }) => (
           <form onSubmit={handleSubmit}>
+            <fieldset><legend>Add Model</legend>
             <TextField
               label="Title"
               id="title"
@@ -99,10 +108,20 @@ const AddModel = () => {
               className="w-100 mb-4"
             />
             <button className="btn btn-primary w-100 mb-4">Submit</button>
+            </fieldset>
           </form>
         )}
       </Formik>
-    </div>
+
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      
+    
   )
 }
 

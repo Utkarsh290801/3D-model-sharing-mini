@@ -1,70 +1,52 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const ModelBrowser = () => {
-    const [threeDArray, setthreeDArray] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const getDataFromBackend = async () => {
-        setLoading(true);
-        const response = await fetch("http://localhost:5000/3dmodel/getall");
-        const data = await response.json();
-        console.log(data);
-        setthreeDArray(data);
-        setLoading(false);
-      }; 
-      useEffect(() => {
-        getDataFromBackend();
-      }, []);
-      const displayUsers = () => {
-        if (loading) {
-      return (
-        <div class="text-center">
-              <div class="spinner-border text-primary " role="status">
-                <span class="visually-hidden">Loading...</span>
+  const [threeDArray, setthreeDArray] = useState([]);
+
+  const getDataFromBackend = async () => {
+    const response = await fetch("http://localhost:5000/3dmodel/getall");
+    const data = await response.json();
+    console.log(data);
+    setthreeDArray(data);
+  };
+  useEffect(() => {
+    getDataFromBackend();
+  }, []);
+
+  return (
+    <div>
+      <div className="container-fluid mt-5 ">
+        <div className="row text-center">
+          {threeDArray.map((curr) => {
+            return (
+              <div className="col-10 col-md-4 mt-5">
+                <div className="card">
+                  <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+      <img src={"https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"} class="img-fluid"/>
+      <a href="#!">
+        <div className="mask" ></div>
+      </a>
+    </div>
+                  <div className="card-body">
+                    <h5 className="card-title">TITLE : {curr.title}</h5>
+                    <p className="card-text">Description : {curr.description}</p>
+                    <p className="card-text">Triangle : {curr.triangle}</p>
+                    <p className="card-text">Size : {curr.size}</p>
+                    <p className="card-text">Material : {curr.materials}</p>
+                    <p className="card-text">Support : {curr.support}</p>
+                    <p className="card-text">Uploaded BY : {curr.uploadedBy}</p>
+                    {/* <a href="#!" className="btn btn-primary">
+                      Button
+                    </a> */}
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        } else {
-          return threeDArray.map(({ _id,title,
-          description,
-          size,
-          triangle,
-          materials,
-          uploadedBy,
-          support }) => (
-            <tr key={_id}>
-              <td>{title}</td>
-              <td>{description}</td>
-              <td>{size}</td>
-              <td>{triangle}</td>
-              <td>{materials}</td>
-              <td>{support}</td>
-              <td>{uploadedBy}</td>
-            </tr>
-          ));
-        }
-      };
-      return (
-        <div>
-          <h1>Model Browser</h1>
-          <div className="row">
-            <div className="col-md">
-              <table className="table table-dark">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Size</th>
-                    <th>Triangle</th>
-                    <th>Materials</th>
-                    <th>Support</th>
-                    <th>UploadedBy</th>
-                  </tr>
-                </thead>
-                <tbody>{displayUsers()}</tbody>
-              </table>
-            </div>
-          </div>
+            );
+          })}
         </div>
-      );
-    };
-    export default ModelBrowser;
+      </div>
+    </div>
+  );
+};
+export default ModelBrowser;

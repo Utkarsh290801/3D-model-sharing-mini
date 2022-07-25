@@ -64,7 +64,7 @@ const Login = () => {
                   Continue with Google
                 </button>
                 <button className="btn btn-primary w-100 mt-4">
-                  Continue with Facebook
+                Continue with Facebook
                 </button>
                 <div className="">
                   <div className="card-body">
