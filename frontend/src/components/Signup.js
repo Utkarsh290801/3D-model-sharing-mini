@@ -60,7 +60,7 @@ const Signup = () => {
     <div className="container-fluid bg-dark">
       <div className="row">
         <div
-          class="col-sm-6 px-0 d-none d-sm-block banner"
+          className="col-sm-6 px-0 d-none d-sm-block banner"
           style={{
             backgroundPosition: "center",
             backgroundAttachment: "fixed",

@@ -13,7 +13,7 @@ const ModelBrowser = () => {
   useEffect(() => {
     getDataFromBackend();
   }, []);
-
+         
   return (
     <div>
       <div className="container-fluid mt-5 ">
