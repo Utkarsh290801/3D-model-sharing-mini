@@ -1,10 +1,12 @@
 import { TextField } from '@mui/material';
 import { Formik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 
-const AddModel = () => {
 
+const AddModel = () => {
+  const url = 'http://localhost:5000'
+  const [thumbnail, setThumbnail] = useState("");
     const AddForm = {
       title: "",
       description: "",
@@ -13,6 +15,29 @@ const AddModel = () => {
       materials: "",
       uploadedBy: "",
       support: "",
+      thumbnail:"",
+    };
+    const uploadThumbnail = (e) => {
+      console.log("file selected");
+      const file = e.target.files[0];
+      setThumbnail(file.name);
+      const fd = new FormData();
+      fd.append("myfile", file);
+      fetch(url + "/util/uploadfile", {
+        method: "POST",
+        body: fd,
+      }).then((res) => {
+        console.log(res.status);
+        // if (res.status === 200) {
+        //   toast.success("Image Uploaded!!", {
+        //     style: {
+        //       borderRadius: "10px",
+        //       background: "#333",
+        //       color: "#fff",
+        //     },
+        //   });
+        // }
+      });
     };
     const addSubmit = async(formdata) => {
       console.log(formdata);
@@ -107,6 +132,19 @@ const AddModel = () => {
               onChange={handleChange}
               className="w-100 mb-4"
             />
+            
+            <div className="mb-3">
+                      <label for="formFile" class="form-label">
+                        Add Image
+                      </label>
+                      <input
+                        className="form-control"
+                        type="file"
+                        id="thumbnail"
+
+                        onChange={uploadThumbnail}
+                      />
+                    </div>
             <button className="btn btn-primary w-100 mb-4">Submit</button>
             </fieldset>
           </form>

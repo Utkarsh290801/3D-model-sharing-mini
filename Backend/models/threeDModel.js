@@ -8,6 +8,7 @@ const myschema = new Schema({
     materials:String,
     uploadedBy:String,
     support:String,
+    thumbnail: String,
 
 });
 
