@@ -8,8 +8,8 @@ const myschema = new Schema({
     materials:String,
     uploadedBy:String,
     support:String,
-    thumbnail: String,
-
+    image : String,
+    file : String,
 });
 
 module.exports= model('3D',myschema);

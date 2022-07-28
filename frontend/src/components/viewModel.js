@@ -1,19 +1,34 @@
-import React, { Suspense } from "react";
-import { useLoader } from "@react-three/fiber";
+import React, { Suspense, useEffect } from "react";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { Environment, OrbitControls } from '@react-three/drei'
 
 const ViewModel = () => {
-  const gltf = useLoader(GLTFLoader, "/scene.gltf");
-
-  const showModel = () => {
+  const Model = () => {
+    const gltf = useLoader(GLTFLoader, "./scene.gltf");
     return (
-      <Suspense fallback={null}>
-        <primitive object={gltf.scene} />
-      </Suspense>
+      <>
+        <primitive object={gltf.scene} scale={0.4} />
+      </>
     );
   };
 
-  return <div></div>;
+  const showModel = () => {
+    return (
+      <Canvas style={{height : '100vh'}}>
+        <Suspense fallback={null}>
+          <Model />
+          <OrbitControls />
+          <Environment preset="sunset" background />
+        </Suspense>
+      </Canvas>
+    );
+  };
+
+
+  return <div>
+    {showModel()}
+  </div>;
 };
 
 export default ViewModel;
