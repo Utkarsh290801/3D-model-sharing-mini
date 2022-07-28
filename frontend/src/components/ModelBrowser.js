@@ -23,7 +23,7 @@ const ModelBrowser = () => {
               <div className="col-10 col-md-4 mt-5">
                 <div className="card">
                   <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-      <img src={"https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"} class="img-fluid"/>
+      <img src={"https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"} className="img-fluid"/>
       <a href="#!">
         <div className="mask" ></div>
       </a>
