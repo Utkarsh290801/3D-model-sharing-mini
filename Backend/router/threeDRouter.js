@@ -5,7 +5,7 @@ const router = require('express').Router();
 router.post('/add',(req,res) => { 
     // reading client data from req body
     console.log(req.body);
-    res.send('reponse from user router');
+    // res.send('reponse from user router');
     // create operation    data ko database m add krne k liye   (ascynchronous)
     new Model(req.body).save()
     .then((result) => {
