@@ -11,7 +11,7 @@ app.use("/user", userRouter);
 app.use("/3dmodel", threeDRouter);
 // app.use("/util", utilRouter);
 
-app.use(express.static("./static"));
+app.use(express.static("./static/uploads"));
 
 app.get("/home", (req, res) => {
   res.send("hello express");

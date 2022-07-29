@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Home.css";
 const Home = () => {
 
@@ -7,33 +8,33 @@ const Home = () => {
     <div id="container">
       <div id="navbar">
         <div id="logo">
-          <img src={url+'/assets/logo.png'} alt="" />
+          <img src={url+'/uploads/logo.png'} alt="" />
         </div>
         <ul>
           <li class="active">
-            <a href="#">Home</a>
+            <NavLink to="#">Home</NavLink>
           </li>
         
           <li>
-            <a href="/signup">Sign Up</a>
+            <NavLink to="/signup">Sign Up</NavLink>
           </li>
           <li>
-            <a href="/login">Log In</a>
+            <NavLink to="/login">Log In</NavLink>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <NavLink to="/addmodel">Upload</NavLink>
           </li>
         </ul>
       </div>
       <div id="aSide">
-        <img src={url+'/assets/background.png'} alt="" />
+        <img src={url+'/uploads/background.png'} alt="" />
         <model-viewer
-          src={url+'/assets/Drossel.gltf'}
+          src={url+'/uploads/Drossel.gltf'}
           alt="model robot"
           auto-rotate
           camera-controls
           ar
-          ios-src={url+'/assets/Drossel.gltF'}
+          ios-src={url+'/uploads/Drossel.gltF'}
         ></model-viewer>
       </div>
       <div id="content">

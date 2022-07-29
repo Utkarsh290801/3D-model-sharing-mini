@@ -21,7 +21,7 @@ function App() {
           <Route element={<UserBrowser />} path="userbrowser" />
           <Route element={<AddModel></AddModel>} path="addmodel" />
           <Route element={<ModelBrowser />} path="modelbrowser" />
-          <Route element={<ViewModel />} path="viewer" />
+          <Route element={<ViewModel />} path="viewer/:id" />
           <Route element={<Navigate to="/home" />} path="/" />
         </Routes>
       </BrowserRouter>
