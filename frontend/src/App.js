@@ -8,11 +8,13 @@ import ModelBrowser from "./components/ModelBrowser";
 import Signup from "./components/Signup";
 import UserBrowser from "./components/UserBrowser";
 import ViewModel from "./components/viewModel";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
+     <Header/>  
         <Routes>
           <Route element={<Home></Home>} path="home" />
 

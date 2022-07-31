@@ -4,7 +4,9 @@ import { Formik } from "formik";
 
 import { EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const loginform = {
     email: "",
@@ -26,6 +28,7 @@ const Login = () => {
           title: "Success",
           text: "Login Success!!👍",
         });
+        navigate('/modelbrowser');  
       } else if (res.status === 300) {
         Swal.fire({
           icon: "error",
@@ -37,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container-fluid bg-dark">
+    <div className="container-fluid "style={{background: "linear-gradient(to top, #ffffff00,#64a5ad, #ffffff00,#64a5ad)"}}>
       <div className="row">
         <div
           class="col-sm-6 px-0 d-none d-sm-block banner"
@@ -51,12 +54,14 @@ const Login = () => {
             className="img-fluid image"
             // style={{background:"content",backgroundSize:'fixed'}}
             src="https://cdn.creators3d.com/site/stripe_2.jpg"
+            // src="https://static.turbosquid.com/Preview/2014/07/07__14_43_27/midshootrender.jpg617b6d0a-2b43-471f-804c-428eba59dc76Large.jpg"
+            // src="https://media.sketchfab.com/models/51400549799b410c8cdb778a9350d589/thumbnails/8b67515e8bf74949b82dd6c712436ee5/3334fab8ce1d4d84bebb0a98f1b345bb.jpeg"
             alt=""
           />
           <h1 className="heading">WELCOME BACK</h1>
           <p className="paragraph"></p>
         </div>
-        <div class="col-sm-6 " style={{ color: "white" }}>
+        <div class="col-sm-6 " style={{ color: "" }}>
           <div className="signup-cont">
             <div className="">
               <div className="col-md-6 col-sm-6 mx-auto">
@@ -118,7 +123,9 @@ const Login = () => {
                             value={values.password}
                           />
 
-                          <Button type="submit" variant="contained" fullWidth>
+                          <Button type="submit" variant=""
+                          className="btn  "
+                          sx={{background: "#64a5ad"}} fullWidth>
                             {" "}
                             Sign Up
                           </Button>

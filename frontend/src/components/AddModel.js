@@ -1,6 +1,7 @@
 import { TextField } from "@mui/material";
 import { Formik } from "formik";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddModel = () => {
@@ -8,7 +9,7 @@ const AddModel = () => {
   const [selFile, setSelFile] = useState("");
 
   const url = "http://localhost:5000";
-
+  const navigate = useNavigate();
   const AddForm = {
     title: "",
     description: "",
@@ -39,6 +40,7 @@ const AddModel = () => {
         title: "Well Done",
         text: "You have done a wonderful job !! 👍👍",
       });
+      navigate('/modelbrowser');   
     } else {
       console.log(response.status);
       console.log("something went wrong");
@@ -82,23 +84,25 @@ const AddModel = () => {
 
   return (
     <div>
-      <div className="container-fluid pt-3 bg-dark">
+      <div className="container-fluid pt-5 " style={{background: "#7f9ead"}}>
         <div className="row">
           <div className="">
             <div className="col-md-6 col-sm-6 mx-auto">
-              <div className="card">
-                <div className="card-body">
+              <div className="card browser">
+              <div className="card-body">
+                <div className="card-body add">
+                <h1>Upload Your 3D Model</h1>
                   <Formik initialValues={AddForm} onSubmit={addSubmit}>
                     {({ values, handleSubmit, handleChange }) => (
                       <form onSubmit={handleSubmit}>
                         <fieldset>
-                          <legend>Add Model</legend>
+                         
                           <TextField
                             label="Title"
                             id="title"
                             value={values.title}
                             onChange={handleChange}
-                            className="w-100 mb-4"
+                            className="w-100 mb-4 mt-3"
                           />
                           <TextField
                             label="Description"
@@ -157,8 +161,8 @@ const AddModel = () => {
                             onChange={uploadFile}
                           />
 
-                          <button className="btn btn-primary w-100 mt-5">
-                            Submit
+                          <button className="btn btn-primary model w-100 mt-5">
+                           <h3> Submit Model</h3>
                           </button>
                         </fieldset>
                       </form>
@@ -166,6 +170,7 @@ const AddModel = () => {
                   </Formik>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>

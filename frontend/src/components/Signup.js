@@ -45,7 +45,7 @@ const Signup = () => {
   const formSchema = Yup.object().shape({
     username: Yup.string()
       .min(2, "Too Short username!")
-      .max(5, "Too Long username !")
+      .max(10, "Too Long username !")
       .required("Required is required"),
 
     email: Yup.string().email("Invalid email").required("Required"),
@@ -57,7 +57,10 @@ const Signup = () => {
       ),
   });
   return (
-    <div className="container-fluid bg-dark">
+    <div className="container-fluid" 
+    // style={{background: "#7f9ead"}}
+   style={{background: "linear-gradient(to top, #64a5ad, #ffffff00)"}} 
+    >
       <div className="row">
         <div
           className="col-sm-6 px-0 d-none d-sm-block banner"
@@ -76,7 +79,7 @@ const Signup = () => {
           <h1 className="heading">LET'S GET YOU ON BOARD</h1>
           <p className="paragraph">Welcome to our 3D Model sharing site!</p>
         </div>
-        <div class="col-sm-6 " style={{ color: "white" }}>
+        <div class="col-sm-6 " style={{ color: "" }}>
           <div className="signup-cont">
             <div className="">
               <div className="col-md-6 col-sm-6 mx-auto">
@@ -90,7 +93,7 @@ const Signup = () => {
                     <hr className="mb-4" />
                     <h4 style={{ textAlign: "center" }}>
 
-                    <i>SignUP</i>
+                    Sign up
                     </h4>
                     <Formik
                       initialValues={signup}
@@ -162,7 +165,8 @@ const Signup = () => {
                             helperText={touched.password ? errors.password : ""}
                             error={Boolean(errors.password && touched.password)}
                           />
-                          <Button type="submit" variant="contained" fullWidth>
+                          <Button type="submit" variant=""
+                          sx={{background: "#64a5ad"}} fullWidth>
                             {" "}
                             Sign Up
                           </Button>

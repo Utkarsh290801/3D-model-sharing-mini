@@ -1,51 +1,50 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Home.css";
 const Home = () => {
-
-    const url = 'http://localhost:5000'
+  const url = "http://localhost:5000";
   return (
     <div id="container">
       <div id="navbar">
         <div id="logo">
-          <img src={url+'/uploads/logo.png'} alt="" />
+          <img src={url + "/logo.png"} alt="" />
         </div>
         <ul>
           <li class="active">
-            <NavLink to="#">Home</NavLink>
+            <a to="#">Home</a>
           </li>
-        
+
           <li>
-            <NavLink to="/signup">Sign Up</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Log In</NavLink>
+            <a   href="/signup">Sign Up</a>
           </li>
           <li>
-            <NavLink to="/addmodel">Upload</NavLink>
+            <Link to="/login">Log In</Link>
+          </li>
+          <li>
+            <Link to="/addmodel">Upload</Link>
           </li>
         </ul>
       </div>
       <div id="aSide">
-        <img src={url+'/uploads/background.png'} alt="" />
+        <img src={url + "/background.png"} alt="" />
         <model-viewer
-          src={url+'/uploads/Drossel.gltf'}
+          src={url + "/Drossel.gltf"}
           alt="model robot"
           auto-rotate
           camera-controls
           ar
-          ios-src={url+'/uploads/Drossel.gltF'}
+          ios-src={url + "/Drossel.gltF"}
         ></model-viewer>
       </div>
       <div id="content">
         <h2>3D MODEL</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-          laboriosam, sapiente veniam<mark>Made By Utkarsh arora</mark> quae perferendis sunt cumque iusto
-          distinctio totam facilis. Obcaecati minima at magni eligendi ip sum hic
-          officia iure ipsam?
+          laboriosam, sapiente veniam<mark>Made By Utkarsh arora</mark> quae
+          perferendis sunt cumque iusto distinctio totam facilis. Obcaecati
+          minima at magni eligendi ip sum hic officia iure ipsam?
         </p>
-        <button>Find More</button>
+        <Link  class="btn button" to="/modelbrowser">Find More</Link>
       </div>
       <div id="icons">
         <div id="iconsLogo">
@@ -56,8 +55,8 @@ const Home = () => {
         </div>
       </div>
       <div id="pagination">
-        <div id="leftBtn" >
-          <i  class="fas fa-angle-left"></i>
+        <div id="leftBtn">
+          <i class="fas fa-angle-left"></i>
         </div>
         <div id="rightBtn">
           <i class="fas fa-angle-right"></i>

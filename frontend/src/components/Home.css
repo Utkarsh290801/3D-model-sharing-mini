@@ -189,3 +189,13 @@ model-viewer {
     font-size: 80px;
     color: #207884;
 }
+.button{
+    color: #207884;
+    font-size: 30px;
+    transform: 0.5s;
+    background: linear-gradient(to top, #64a5ad, #ffffff00);
+    border: 2px solid #98c3c8;
+    place-items: center;
+    border-radius: 25px 0;
+    
+}

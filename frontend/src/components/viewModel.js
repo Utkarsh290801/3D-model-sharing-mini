@@ -33,12 +33,20 @@ const ViewModel = () => {
     if (!loading && modelData) {
       return (
         <div className="card">
-          <div className="row">
+          {showModel(modelData.file)}
+          <div className="row " style={{ padding: "2rem" }}>
+            <div className="col-md-3">
+              <h5 className="card-title">Title: {modelData.title}</h5>
+            </div>
+            <div className="col-md-3">
+              <p className="card-text">Triangle : {modelData.triangle}</p>
+            </div>
+            <div className="col-md-3"></div>
+            <div className="col-md-3"></div>
             <div className="col-md-6 col-sm-6 mx-auto">
               <div className="card-body">
-                <h5 className="card-title">Title: {modelData.title}</h5>
-                <p className="card-text">Description:{modelData.description}</p>
-                <p className="card-text">Triangle : {modelData.triangle}</p>
+                {/* <p className="card-text">Description:{modelData.description}</p>
+                
                     <p className="card-text">Size : {modelData.size}</p>
                     <p className="card-text">Material : {modelData.materials}</p>
                     <p className="card-text">Support : {modelData.support}</p>
@@ -48,11 +56,10 @@ const ViewModel = () => {
 
                 <p className="card-text">
                   <small className="text-muted">Uploaded By:</small>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
-          {showModel(modelData.file)}
         </div>
       );
     }
