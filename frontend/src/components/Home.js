@@ -56,10 +56,10 @@ const Home = () => {
       </div>
       <div id="pagination">
         <div id="leftBtn">
-          <i class="fas fa-angle-left"></i>
+<Link to="/viewer/62e559016b0f7d4169ae526a"><i class="fas fa-angle-left"></i></Link>
         </div>
         <div id="rightBtn">
-          <i class="fas fa-angle-right"></i>
+          <Link to="/viewer/62e2425833d4617dc9c60348"><i class="fas fa-angle-right"></i></Link>
         </div>
       </div>
     </div>

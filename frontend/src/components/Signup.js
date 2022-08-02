@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
+import { AccountCircle, EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const Signup = () => {
@@ -114,10 +114,18 @@ const Signup = () => {
                             className="w-100 mb-3
                       "
                             id="username" // else we use name ="username"
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <AccountCircle />
+                                </InputAdornment>
+                              ),
+                            }}
                             onChange={handleChange}
                             value={values.username}
                             helperText={touched.username ? errors.username : ""}
                             error={Boolean(errors.username && touched.username)}
+                           
                           />
                           <TextField
                             label="Email"

@@ -6,10 +6,13 @@ const myschema = new Schema({
     size: String,
     triangle:String,
     materials:String,
+    vertices:String,
     uploadedBy:String,
     support:String,
     image : String,
     file : String,
+    createdAt: Date,
+    category: String,
 });
 
 module.exports= model('3D',myschema);

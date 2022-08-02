@@ -72,7 +72,7 @@ const ModelBrowser = () => {
                   <div className="card-body" >
                     <h3 className="card-title text-center"> {curr.title}</h3>
                     <p className="card-text">
-                      Description : {curr.description}
+                      Description : {curr.description.substring(0,10)}
                     </p>
                     <p className="card-text">Triangle : {curr.triangle}</p>
                     <p className="card-text">Size : {curr.size}</p>

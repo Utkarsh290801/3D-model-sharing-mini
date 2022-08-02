@@ -16,6 +16,7 @@ const AddModel = () => {
     size: "",
     triangle: "",
     materials: "",
+    vertices:"",
     uploadedBy: "",
     support: "",
     image: "",
@@ -40,7 +41,10 @@ const AddModel = () => {
         title: "Well Done",
         text: "You have done a wonderful job !! 👍👍",
       });
-      navigate('/modelbrowser');   
+      response.json().then(data => {
+        navigate('/viewer/'+data._id);   
+        
+      })
     } else {
       console.log(response.status);
       console.log("something went wrong");
@@ -122,6 +126,13 @@ const AddModel = () => {
                             label="Triangle"
                             id="triangle"
                             value={values.triangle}
+                            onChange={handleChange}
+                            className="w-100 mb-4"
+                          />
+                          <TextField
+                            label="Vertices"
+                            id="vertices"
+                            value={values.vertices}
                             onChange={handleChange}
                             className="w-100 mb-4"
                           />

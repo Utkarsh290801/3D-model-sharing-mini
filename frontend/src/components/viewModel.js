@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ViewModel = () => {
   const { id } = useParams();
@@ -32,31 +32,107 @@ const ViewModel = () => {
     console.log(loading);
     if (!loading && modelData) {
       return (
-        <div className="card">
-          {showModel(modelData.file)}
-          <div className="row " style={{ padding: "2rem" }}>
-            <div className="col-md-3">
-              <h5 className="card-title">Title: {modelData.title}</h5>
-            </div>
-            <div className="col-md-3">
-              <p className="card-text">Triangle : {modelData.triangle}</p>
-            </div>
-            <div className="col-md-3"></div>
-            <div className="col-md-3"></div>
-            <div className="col-md-6 col-sm-6 mx-auto">
-              <div className="card-body">
-                {/* <p className="card-text">Description:{modelData.description}</p>
-                
-                    <p className="card-text">Size : {modelData.size}</p>
-                    <p className="card-text">Material : {modelData.materials}</p>
-                    <p className="card-text">Support : {modelData.support}</p>
-                    <p className="card-text">Uploaded BY : {modelData.uploadedBy}</p>
-                    <p className="card-text">File : {modelData.file}</p>
-                    <p className="card-text">Image: {modelData.image}</p>
+        <div
+          style={{
+            background:
+              "linear-gradient(to top, #ffffff00,#64a5ad, #ffffff00,#64a5ad)",
+          }}
+        >
+          <div className="container">
+            <div className="row " style={{ padding: "3rem" }}>
+              {/* <div className="col-md-12"> */}
+              <div className="card bg-">
+                <div className="card-body">{showModel(modelData.file)}</div>
+                {/* </div> */}
 
-                <p className="card-text">
-                  <small className="text-muted">Uploaded By:</small>
-                </p> */}
+                <div style={{ padding: "2rem", marginTop: "-3%" }}>
+                  <h2
+                    className="card-title"
+                    style={{ fontWeight: "bold", fontSize: "50px" }}
+                  >
+                    {" "}
+                    {modelData.title}
+                  </h2>
+                  <h5>3D Model</h5>
+                  <a
+                    href={url + "/zipfiles/" + modelData.file}
+                    target="_blank"
+                    className="btn text-white"
+                    style={{
+                      float: "right",
+                      marginTop: "-8%",
+                      background: "#64a5ad",
+                    }}
+                  >
+                    {" "}
+                    <i class="fa-solid fa-download"></i> Download 3D Model
+                  </a>
+                  <h5
+                    style={{
+                      float: "right",
+                      marginTop: "-3%",
+                      fontWeight: "bold",
+                    }}
+                    className="card-text"
+                  >
+                    Uploaded BY : {modelData.uploadedBy}
+                  </h5>
+                  <hr />
+                </div>
+                <div
+                  style={{
+                    paddingLeft: "2rem",
+                    fontSize: "20px",
+                    marginTop: "-2%",
+                  }}
+                >
+                  <div className="row">
+                    <div className="col-md">
+                      <p className="card-text">
+                        <b>Triangle : </b>
+                        {modelData.triangle}
+                      </p>
+                    </div>
+                    <div className="col-md">
+                      <p className="card-text">
+                        <b>Vertices:</b>
+                        {modelData.vertices}
+                      </p>
+                    </div>
+                    {/* <div className="col-md">
+            <p className="card-text"><b>Material :</b> {modelData.materials}</p>
+            </div> */}
+                    <div className="col-md">
+                      <p className="card-text">
+                        <b>Material :</b> {modelData.materials}
+                      </p>
+                    </div>
+                    <div className="col-md">
+                      <p className="card-text">
+                        <b>Support :</b> {modelData.support}
+                      </p>
+                    </div>
+
+                    <div className="col-md">
+                      <p className="card-text">
+                        <b>Size :</b> {modelData.size}
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                  <p className="card-text">
+                    <b>Description:</b> {modelData.description}
+                  </p>
+                  <hr />
+                </div>
+                <Link
+                  style={{ background: "#64a5ad" }}
+                  className="btn "
+                  to="/modelbrowser"
+                >
+                  Go Back
+                </Link>
+                <hr />
               </div>
             </div>
           </div>

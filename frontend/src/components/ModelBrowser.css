@@ -98,7 +98,13 @@ transform: translateY(-200px); */
     background:  #07454d;
 }
 
-
+.details{
+    display: flex;
+   justify-content: space-between;
+   /* font-size: 1em; */
+   margin-top: 5%;
+   /* opacity: 0.5; */
+}
 
 
 

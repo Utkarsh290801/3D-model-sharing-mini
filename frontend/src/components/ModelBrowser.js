@@ -7,7 +7,33 @@ import "./ModelBrowser.css";
 const ModelBrowser = () => {
   const url = "http://localhost:5000";
   const [threeDArray, setthreeDArray] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [filter, setFilter] = useState("");
+  const handleFilter = async (event) => {
+    
+    const response = await fetch("http://localhost:5000/3dmodel/getall");
+    const data = await response.json();
+    setthreeDArray(
+      data.filter((value) => {
+        return value.title.toLowerCase().includes(filter.toLowerCase());
+      })
+    );
+    // if (searchWord === "") {
+    //   setFilteredData([]);
+    // } else {
+    //   setFilteredData(newFilter);
+    // }
+  };
+  const filterCategory = async (event) => {
+    const response = await fetch("http://localhost:5000/podcast/getall");
+    const data = await response.json();
 
+    setListArray(
+      data.filter((value) => {
+        return value.category.toLowerCase().includes(filter.toLowerCase());
+      })
+    );
+  };
   const getDataFromBackend = async () => {
     const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
@@ -150,19 +176,33 @@ const ModelBrowser = () => {
                     />
                     </div>
                     <div className="con">
-                    <h2 className="card-title text-center"> {curr.title}</h2>
-                    <p className="card-text">
-                      Description : {curr.description}
-                    </p>
+                    <h1 className="card-title text-center"> {curr.title}</h1>
+                  
+                    <div className="container details">
+                    {/* <div className="row">
+                    <div className="col"> */}
+                    <span className="data">Size<h5> <b>{curr.size}</b></h5> </span>
 
-                    <p className="card-text">Triangle : {curr.triangle}</p>
+                    {/* </div> */}
+                    {/* <div className="col" > */}
+                    
+
+                    <span className="data" >Uploaded BY
+                      <h5> <b>{curr.uploadedBy}</b></h5>
+                      </span>
+                    {/* </div> */}
+                    {/* </div> */}
+                    </div>
+                    {/* <p className="card-text">
+                      Description : {curr.description}
+                    </p> */}
+
+                    {/* <p className="card-text">Triangle : {curr.triangle}</p>
                     <p className="card-text">File : {curr.file}</p>
-                    <p className="card-text">Image : {curr.image}</p>
-                    <p className="card-text">Size : {curr.size}</p>
-                    <p className="card-text">Material : {curr.materials}</p>
-                    <p className="card-text">Support : {curr.support}</p>
-                    <p className="card-text">Uploaded BY : {curr.uploadedBy}</p>
-                    <Link to={'/viewer/'+curr._id} className="btn  btn-primary model w-100"  >
+                    <p className="card-text">Image : {curr.image}</p> */}
+                    {/* <p className="card-text">Material : {curr.materials}</p>
+                    <p className="card-text">Support : {curr.support}</p> */}
+                     <Link to={'/viewer/'+curr._id} className="btn  btn-primary model w-100"  >
                       View Model
                     </Link>
                     </div>

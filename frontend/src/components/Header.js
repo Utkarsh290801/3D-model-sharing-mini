@@ -3,17 +3,17 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AppContext } from "../AppContext";
 const Header = () => {
   const url = "http://localhost:5000";
-  // const [currentUser , setCurrentUser]=  useState(JSON.parse(sessionStorage.getItem('user')))
-  // const {loggedIn,setloggedIn} = useContext(AppContext);
-  // const navigate = useNavigate();
-  // const logout =()=>{
-  //   //destroy session value 
-  //   sessionStorage.removeItem('user');
-  //   //  setloggedIn to false
-  //   setloggedIn(false)
-  //   //  navigate to login page
-  //   navigate('/login')
-  // }
+  const [currentUser , setCurrentUser]=  useState(JSON.parse(sessionStorage.getItem('user')))
+  const {loggedIn,setloggedIn} = useContext(AppContext);
+  const navigate = useNavigate();
+  const logout =()=>{
+    //destroy session value 
+    sessionStorage.removeItem('user');
+    //  setloggedIn to false
+    setloggedIn(false)
+    //  navigate to login page
+    navigate('/home')
+  }
   return (
     <div>
       {/* <!-- Navbar --> */}
@@ -96,19 +96,18 @@ const Header = () => {
               :
               <button onClick={logout} className="btn btn-danger">Logout</button>
             }
+ */}
+
+          {/* <!-- Icon --> */}
 
 
 
-          <!-- Icon --> */}
-
-
-
-          {/* <Link  class="nav-item me-5" to="">
-          <i  href="/addmodel" class="fa-solid fa-upload"></i>
-          </Link> */}
-          <a class="text-reset me-3" href="#">
+          <Link  class="nav-item me-3" to="/addmodel">
+          <i class="fa-solid fa-upload"></i>
+          </Link>
+          {/* <a class="text-reset me-3" href="#">
             <i class="fas fa-shopping-cart"></i>
-          </a>
+          </a> */}
     
           {/* <!-- Notifications --> */}
           <div class="dropdown">
@@ -166,9 +165,18 @@ const Header = () => {
               <li>
                 <a class="dropdown-item" href="#">Settings</a>
               </li>
-              <li>
+              {/* <li>
                 <a class="dropdown-item" href="#">Logout</a>
+              </li> */}
+              {
+              // currentUser=== null?
+              !loggedIn?
+              <li className="nav-item">
+                <NavLink className="btn btn-primary" to="/login">Login Now</NavLink>
               </li>
+              :
+              <button onClick={logout} className="btn btn-danger">Logout</button>
+            }
              
             </ul>
           </div>
