@@ -27,9 +27,7 @@ const Home = () => {
       </div>
       <div id="aSide">
         <img src={url + "/background.png"} alt="" />
-        
-        <model-viewer 
-        
+        <model-viewer
           src={url + "/Drossel.gltf"}
           alt="model robot"
           auto-rotate
