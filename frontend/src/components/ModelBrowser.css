@@ -55,11 +55,12 @@ box-shadow: inset 5px 5px 5px rgba(0,0,0,0.05),inset -5px -5px 5px rgba(255,255,
     
 }
 .outer2:hover {
+    /* background: #799bb3; */
     background: #ebf5fc;
     /* background: #207884; */
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     border-radius: 15px;
-    transform: translateY(-80px);
+    /* transform: translateY(-80px); */
    
 }
 .outer:hover con{

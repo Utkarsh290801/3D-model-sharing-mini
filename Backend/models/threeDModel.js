@@ -8,7 +8,7 @@ const myschema = new Schema({
     materials:String,
     vertices:String,
     uploadedBy:String,
-    support:String,
+    textures:String,
     image : String,
     file : String,
     createdAt: Date,

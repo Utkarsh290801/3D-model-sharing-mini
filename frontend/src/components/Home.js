@@ -15,7 +15,7 @@ const Home = () => {
           </li>
 
           <li>
-            <a   href="/signup">Sign Up</a>
+            <a href="/signup">Sign Up</a>
           </li>
           <li>
             <Link to="/login">Log In</Link>
@@ -27,7 +27,9 @@ const Home = () => {
       </div>
       <div id="aSide">
         <img src={url + "/background.png"} alt="" />
-        <model-viewer
+        
+        <model-viewer 
+        
           src={url + "/Drossel.gltf"}
           alt="model robot"
           auto-rotate
@@ -39,12 +41,19 @@ const Home = () => {
       <div id="content">
         <h2>3D MODEL</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
+          The leading platform for 3D on the web . Join millions of 3D creators
+          and showcase your work . Share 3D design content for the web. Check
+          out our selection of 3D models by super talented artists and Download
+          Free 3D models for 3D printing cars, architecture, character, weapons,
+          animals and more....
+          {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
           laboriosam, sapiente veniam<mark>Made By Utkarsh arora</mark> quae
           perferendis sunt cumque iusto distinctio totam facilis. Obcaecati
-          minima at magni eligendi ip sum hic officia iure ipsam?
+          minima at magni eligendi ip sum hic officia iure ipsam? */}
         </p>
-        <Link  class="btn button" to="/modelbrowser">Find More</Link>
+        <Link class="btn button" to="/modelbrowser">
+          Find More
+        </Link>
       </div>
       <div id="icons">
         <div id="iconsLogo">
@@ -56,10 +65,14 @@ const Home = () => {
       </div>
       <div id="pagination">
         <div id="leftBtn">
-<Link to="/viewer/62e559016b0f7d4169ae526a"><i class="fas fa-angle-left"></i></Link>
+          <Link to="/viewer/62e97d178d90341437d3110c">
+            <i class="fas fa-angle-left"></i>
+          </Link>
         </div>
         <div id="rightBtn">
-          <Link to="/viewer/62e2425833d4617dc9c60348"><i class="fas fa-angle-right"></i></Link>
+          <Link to="//viewer/62e980868d90341437d3111c">
+            <i class="fas fa-angle-right"></i>
+          </Link>
         </div>
       </div>
     </div>

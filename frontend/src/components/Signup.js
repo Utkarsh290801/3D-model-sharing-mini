@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { AccountCircle, EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  AccountCircle,
+  EmailOutlined,
+  Visibility,
+  VisibilityOff,
+} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const Signup = () => {
+  const url = "http://localhost:5000";
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const signup = {
@@ -13,34 +19,33 @@ const Signup = () => {
     email: "",
     password: "",
   };
-  const userSubmit = async(formdata) => {
+  const userSubmit = async (formdata) => {
     console.log(formdata);
-    const response= await fetch( 'http://localhost:5000/user/add',{
-      method : 'POST',
-        body : JSON.stringify(formdata),
-        headers:{
-          "Content-Type" : "application/json",
-         }
-        })
-        if(response.status===200){
-          console.log(response.status);
-          console.log('success')
-          Swal.fire({
-                icon : "success",
-                   title:"Well Done",
-                   text:'You have done a wonderful job !! 👍👍'
-               })     
-               navigate('/login');                      
-  
-        } else{
-          console.log(response.status);
-          console.log('something went wrong')
-          Swal.error({
-            icon : "error",
-               title:"OOPS",
-               text:'!! something went wrong!!'
-           })     
-        }      
+    const response = await fetch("http://localhost:5000/user/add", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      console.log(response.status);
+      console.log("success");
+      Swal.fire({
+        icon: "success",
+        title: "Well Done",
+        text: "You have done a wonderful job !! 👍👍",
+      });
+      navigate("/login");
+    } else {
+      console.log(response.status);
+      console.log("something went wrong");
+      Swal.error({
+        icon: "error",
+        title: "OOPS",
+        text: "!! something went wrong!!",
+      });
+    }
   };
   const formSchema = Yup.object().shape({
     username: Yup.string()
@@ -57,9 +62,10 @@ const Signup = () => {
       ),
   });
   return (
-    <div className="container-fluid" 
-    // style={{background: "#7f9ead"}}
-   style={{background: "linear-gradient(to top, #64a5ad, #ffffff00)"}} 
+    <div
+      className="container-fluid"
+      // style={{background: "#7f9ead"}}
+      style={{ background: "linear-gradient(to top, #64a5ad, #ffffff00)" }}
     >
       <div className="row">
         <div
@@ -83,18 +89,27 @@ const Signup = () => {
           <div className="signup-cont">
             <div className="">
               <div className="col-md-6 col-sm-6 mx-auto">
-        <button className="btn btn-success w-100 mt-2">Continue with Google</button>
-        <button className="btn btn-primary w-100 mt-4">Continue with Facebook</button>
+                <button className="btn btn-success w-100 mt-2">
+                  Continue with Google
+                </button>
+                <button className="btn btn-primary w-100 mt-4">
+                  Continue with Facebook
+                </button>
                 <div className="">
                   <div className="card-body">
+                    {/* <model-viewer
+                      src={url + "/nissan_240z_rocket_bunny/scene.gltf"}
+                      alt="model robot"
+                      auto-rotate
+                      camera-controls
+                      ar
+                      ios-src={url + "/nissan_240z_rocket_bunny/scene.gltf"}
+                    ></model-viewer> */}
                     <h4 style={{ textAlign: "center", marginTop: "2%" }}>
-                      <i style={{top:''}}>OR</i>
+                      <i style={{ top: "" }}>OR</i>
                     </h4>
                     <hr className="mb-4" />
-                    <h4 style={{ textAlign: "center" }}>
-
-                    Sign up
-                    </h4>
+                    <h4 style={{ textAlign: "center" }}>Sign up</h4>
                     <Formik
                       initialValues={signup}
                       onSubmit={userSubmit}
@@ -125,7 +140,6 @@ const Signup = () => {
                             value={values.username}
                             helperText={touched.username ? errors.username : ""}
                             error={Boolean(errors.username && touched.username)}
-                           
                           />
                           <TextField
                             label="Email"
@@ -173,8 +187,12 @@ const Signup = () => {
                             helperText={touched.password ? errors.password : ""}
                             error={Boolean(errors.password && touched.password)}
                           />
-                          <Button type="submit" variant=""
-                          sx={{background: "#64a5ad"}} fullWidth>
+                          <Button
+                            type="submit"
+                            variant=""
+                            sx={{ background: "#64a5ad" }}
+                            fullWidth
+                          >
                             {" "}
                             Sign Up
                           </Button>

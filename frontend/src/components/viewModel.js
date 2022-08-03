@@ -109,7 +109,7 @@ const ViewModel = () => {
                     </div>
                     <div className="col-md">
                       <p className="card-text">
-                        <b>Support :</b> {modelData.support}
+                        <b>Textures :</b> {modelData.textures}
                       </p>
                     </div>
 
@@ -128,7 +128,7 @@ const ViewModel = () => {
                 <Link
                   style={{ background: "#64a5ad" }}
                   className="btn "
-                  to="/modelbrowser"
+                  to="/home"
                 >
                   Go Back
                 </Link>

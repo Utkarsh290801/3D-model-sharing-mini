@@ -102,7 +102,7 @@ model-viewer {
     width: 700px;
     position: absolute;
     left: 12%;
-    top: calc(50% - 250px);
+    top: calc(50% - 275px);
 }
 
 #content h2 {

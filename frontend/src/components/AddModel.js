@@ -12,13 +12,14 @@ const AddModel = () => {
   const navigate = useNavigate();
   const AddForm = {
     title: "",
+    category:"",
     description: "",
     size: "",
     triangle: "",
     materials: "",
     vertices:"",
     uploadedBy: "",
-    support: "",
+    textures: "",
     image: "",
     file: "",
   };
@@ -100,7 +101,14 @@ const AddModel = () => {
                     {({ values, handleSubmit, handleChange }) => (
                       <form onSubmit={handleSubmit}>
                         <fieldset>
-                         
+{/*                          
+                          <TextField
+                            label="Category"
+                            id="category"
+                            value={values.category}
+                            onChange={handleChange}
+                            className="w-100 mb-4 mt-3"
+                          /> */}
                           <TextField
                             label="Title"
                             id="title"
@@ -143,17 +151,17 @@ const AddModel = () => {
                             onChange={handleChange}
                             className="w-100 mb-4"
                           />
+                            <TextField
+                              label="Textures"
+                              id="textures"
+                              value={values.textures}
+                              onChange={handleChange}
+                              className="w-100 mb-4"
+                            />
                           <TextField
                             label="UploadedBy"
                             id="uploadedBy"
                             value={values.uploadedBy}
-                            onChange={handleChange}
-                            className="w-100 mb-4"
-                          />
-                          <TextField
-                            label="Support"
-                            id="support"
-                            value={values.support}
                             onChange={handleChange}
                             className="w-100 mb-4"
                           />

@@ -28,7 +28,7 @@ const ModelBrowser = () => {
     const response = await fetch("http://localhost:5000/podcast/getall");
     const data = await response.json();
 
-    setListArray(
+    setthreeDArray(
       data.filter((value) => {
         return value.category.toLowerCase().includes(filter.toLowerCase());
       })
@@ -57,11 +57,20 @@ const ModelBrowser = () => {
           ar
           ios-src={url + "/Drossel.gltF"}
         ></model-viewer>
+        {/* <model-viewer
+          src={url + "/Drossel.gltf"}
+          alt="model robot"
+          auto-rotate
+          camera-controls
+          ar
+          ios-src={url + "/Drossel.gltF"}
+        ></model-viewer> */}
 <form>
     <TextField
       id="search-bar"
       sx={{ marginLeft: "25%", width: "70%" }}
       className="text "
+      onChange={(e) => setFilter(e.target.value)}
       // onInput={(e) => {
       //   setSearchQuery(e.target.value);
       // }}
@@ -70,9 +79,20 @@ const ModelBrowser = () => {
       placeholder="Search Your 3D Model..."
       // size="small"
     />
-    <IconButton type="submit" aria-label="search">
+    <IconButton type="button" aria-label="search"  onClick={handleFilter}>
       <SearchIcon style={{ fill: "", fontSize:"30px" }} />
     </IconButton>
+    {filteredData.length != 0 && (
+              <div className="dataResult">
+                {filteredData.slice(0, 15).map((value, key) => {
+                  return (
+                    <a href={value.file} className="dataItem" target="_blank">
+                      <p>{value.title}</p>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
   </form>
         {/* <TextField
           // className="w-100"
