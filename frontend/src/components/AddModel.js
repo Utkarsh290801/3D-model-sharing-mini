@@ -7,7 +7,9 @@ import Swal from "sweetalert2";
 const AddModel = () => {
   const [selImage, setSelImage] = useState("");
   const [selFile, setSelFile] = useState("");
-
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
   const url = "http://localhost:5000";
   const navigate = useNavigate();
   const AddForm = {
@@ -18,7 +20,7 @@ const AddModel = () => {
     triangle: "",
     materials: "",
     vertices:"",
-    uploadedBy: "",
+    uploadedBy: currentUser.username,
     textures: "",
     image: "",
     file: "",
@@ -158,13 +160,13 @@ const AddModel = () => {
                               onChange={handleChange}
                               className="w-100 mb-4"
                             />
-                          <TextField
+                          {/* <TextField
                             label="UploadedBy"
                             id="uploadedBy"
                             value={values.uploadedBy}
                             onChange={handleChange}
                             className="w-100 mb-4"
-                          />
+                          /> */}
 
                           <label>Uploade Image</label>
                           <input

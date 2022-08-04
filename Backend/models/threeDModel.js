@@ -11,7 +11,7 @@ const myschema = new Schema({
     textures:String,
     image : String,
     file : String,
-    createdAt: Date,
+    createdAt: {type:Date,default:new Date()},
     category: String,
 });
 

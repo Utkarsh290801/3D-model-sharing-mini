@@ -54,13 +54,16 @@ const ViewModel = () => {
                     {modelData.title}
                   </h2>
                   <h5>3D Model</h5>
+                  <p className="card-text" >
+                    <b>Created At:</b> {modelData.createdAt}
+                  </p>
                   <a
                     href={url + "/zipfiles/" + modelData.file}
                     target="_blank"
                     className="btn text-white"
                     style={{
                       float: "right",
-                      marginTop: "-8%",
+                      marginTop: "-11%",
                       background: "#64a5ad",
                     }}
                   >
@@ -70,7 +73,7 @@ const ViewModel = () => {
                   <h5
                     style={{
                       float: "right",
-                      marginTop: "-3%",
+                      marginTop: "-7%",
                       fontWeight: "bold",
                     }}
                     className="card-text"

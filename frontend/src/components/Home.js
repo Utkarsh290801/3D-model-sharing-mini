@@ -68,7 +68,7 @@ const Home = () => {
           </Link>
         </div>
         <div id="rightBtn">
-          <Link to="//viewer/62e980868d90341437d3111c">
+          <Link to="/viewer/62e980868d90341437d3111c">
             <i class="fas fa-angle-right"></i>
           </Link>
         </div>
