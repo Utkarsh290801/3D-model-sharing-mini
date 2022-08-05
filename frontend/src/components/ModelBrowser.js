@@ -2,14 +2,15 @@ import { Box, IconButton, InputBase, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./ModelBrowser.css";
 const ModelBrowser = () => {
   const url = "http://localhost:5000";
   const [threeDArray, setthreeDArray] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
-  const handleFilter = async (event) => {
+  const { category } = useParams();
+  const handleFilter = async () => {
     
     const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
@@ -24,8 +25,8 @@ const ModelBrowser = () => {
     //   setFilteredData(newFilter);
     // }
   };
-  const filterCategory = async (event) => {
-    const response = await fetch("http://localhost:5000/podcast/getall");
+  const filterCategory = async () => {
+    const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
 
     setthreeDArray(
@@ -35,6 +36,10 @@ const ModelBrowser = () => {
     );
   };
   const getDataFromBackend = async () => {
+    if (category) {
+      filterCategory(category);
+      return;
+    }
     const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
     console.log(data);
@@ -94,6 +99,16 @@ const ModelBrowser = () => {
               </div>
             )}
   </form>
+  {/* <div className="btn-toolbar text-center well">
+          <button
+            className="btn-light mb-5 "
+            style={{ marginRight: "3%" }}
+            onClick={(e) => filterCategory("education")}
+          >
+            Education
+          </button>
+          
+        </div> */}
         {/* <TextField
           // className="w-100"
           sx={{ marginLeft: "25%", width: "70%" }}
@@ -216,7 +231,7 @@ const ModelBrowser = () => {
                     {/* <p className="card-text">
                       Description : {curr.description}
                     </p> */}
-
+ {/* <p className="text-muted">{curr.category}</p> */}
                     {/* <p className="card-text">Triangle : {curr.triangle}</p>
                     <p className="card-text">File : {curr.file}</p>
                     <p className="card-text">Image : {curr.image}</p> */}
