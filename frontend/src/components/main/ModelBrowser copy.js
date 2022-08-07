@@ -79,7 +79,7 @@ const ModelBrowser = () => {
                     <p className="card-text">Material : {curr.materials}</p>
                     <p className="card-text">Support : {curr.support}</p>
                     <p className="card-text">Uploaded BY : {curr.uploadedBy}</p>
-                    <Link to={'/viewer/'+curr._id} className="btn btn-primary w-100"  >
+                    <Link to={'/main/viewer/'+curr._id} className="btn btn-primary w-100"  >
                       View Model
                     </Link>
                        

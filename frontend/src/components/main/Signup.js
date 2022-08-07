@@ -36,7 +36,7 @@ const Signup = () => {
         title: "Well Done",
         text: "You have done a wonderful job !! 👍👍",
       });
-      navigate("/login");
+      navigate("/main/login");
     } else {
       console.log(response.status);
       console.log("something went wrong");

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Formik } from "formik";
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 import { EmailOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";

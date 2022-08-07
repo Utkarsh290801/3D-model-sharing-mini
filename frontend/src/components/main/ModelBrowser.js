@@ -2,14 +2,15 @@ import { Box, IconButton, InputBase, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./ModelBrowser.css";
 const ModelBrowser = () => {
   const url = "http://localhost:5000";
   const [threeDArray, setthreeDArray] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
-  const handleFilter = async (event) => {
+  const { category } = useParams();
+  const handleFilter = async () => {
     
     const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
@@ -24,17 +25,22 @@ const ModelBrowser = () => {
     //   setFilteredData(newFilter);
     // }
   };
-  const filterCategory = async (event) => {
-    const response = await fetch("http://localhost:5000/podcast/getall");
+  const filterCategory = async (category) => {
+    const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
 
     setthreeDArray(
       data.filter((value) => {
-        return value.category.toLowerCase().includes(filter.toLowerCase());
+        return value.category.toLowerCase().includes(category.toLowerCase());
       })
     );
   };
+
   const getDataFromBackend = async () => {
+    if (category) {
+      filterCategory(category);
+      return;
+    }
     const response = await fetch("http://localhost:5000/3dmodel/getall");
     const data = await response.json();
     console.log(data);
@@ -49,6 +55,46 @@ const ModelBrowser = () => {
       {/* style={{ background: "#7f9ead"}} */}
       <div className="container " style={{ padding: "5rem" }}>
         
+          <div className="btn-toolbar " style={{float:"",marginLeft:"35%",marginTop:"-3%",display:"flex"}}>
+                      <button
+                        className="btn "
+                        style={{ marginRight: "3%" ,marginLeft:"15%",}}
+                        onClick={(e) => filterCategory("Characters & Creatures 3D Models")}
+                      >
+                        Characters & Creatures 3D Models
+                      </button>
+                      
+                      <button
+                        className="btn "
+                        // style={{ marginRight: "3%" }}
+                        onClick={(e) => filterCategory("Cars & Vehicles 3D Models")}
+                      >
+                       Cars & Vehicles 3D Models
+                      </button>
+                      
+                      <button
+                        className="btn "
+                        style={{ marginTop: "3%" ,marginLeft:""}}
+                        onClick={(e) => filterCategory("Architecture 3D Models")}
+                      >
+                      Architecture 3D Models
+                      </button>
+                      <button
+                        className="btn "
+                        style={{ marginTop: "3%",marginLeft:'3%' }}
+                        onClick={(e) => filterCategory("Animals & Pets 3D Models")}
+                      >
+                Animals & Pets 3D Models
+                      </button>
+                      <button
+                        className="btn "
+                        style={{ marginTop: "3%" ,marginLeft:'2%'}}
+                        onClick={(e) => filterCategory("Electronics & Gadgets 3D Models")}
+                      >
+               Electronics & Gadgets 3D Models
+                      </button>
+                      
+                    </div>
         <model-viewer
           src={url + "/Drossel.gltf"}
           alt="model robot"
@@ -65,10 +111,11 @@ const ModelBrowser = () => {
           ar
           ios-src={url + "/Drossel.gltF"}
         ></model-viewer> */}
+      
 <form>
     <TextField
       id="search-bar"
-      sx={{ marginLeft: "25%", width: "70%" }}
+      sx={{ marginLeft: "26%", width: "70%" ,marginTop:"4%"}}
       className="text "
       onChange={(e) => setFilter(e.target.value)}
       // onInput={(e) => {
@@ -80,7 +127,7 @@ const ModelBrowser = () => {
       // size="small"
     />
     <IconButton type="button" aria-label="search"  onClick={handleFilter}>
-      <SearchIcon style={{ fill: "", fontSize:"30px" }} />
+      <SearchIcon style={{ fill: "", fontSize:"30px" ,marginTop:"170%",float:"right"}} />
     </IconButton>
     {filteredData.length != 0 && (
               <div className="dataResult">
@@ -216,13 +263,13 @@ const ModelBrowser = () => {
                     {/* <p className="card-text">
                       Description : {curr.description}
                     </p> */}
-
+ <p className="text-muted text-center">{curr.category}</p>
                     {/* <p className="card-text">Triangle : {curr.triangle}</p>
                     <p className="card-text">File : {curr.file}</p>
                     <p className="card-text">Image : {curr.image}</p> */}
                     {/* <p className="card-text">Material : {curr.materials}</p>
                     <p className="card-text">Support : {curr.support}</p> */}
-                     <Link to={'/viewer/'+curr._id} className="btn  btn-primary model w-100"  >
+                     <Link to={'/main/viewer/'+curr._id} className="btn  btn-primary model w-100"  >
                       View Model
                     </Link>
                     </div>

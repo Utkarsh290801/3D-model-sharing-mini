@@ -15,13 +15,13 @@ const Home = () => {
           </li>
 
           <li>
-            <a href="/signup">Sign Up</a>
+            <a href="/main/signup">Sign Up</a>
           </li>
           <li>
-            <Link to="/login">Log In</Link>
+            <Link to="/main/login">Log In</Link>
           </li>
           <li>
-            <Link to="/addmodel">Upload</Link>
+            <Link to="/main/addmodel">Upload</Link>
           </li>
         </ul>
       </div>
@@ -49,7 +49,7 @@ const Home = () => {
           perferendis sunt cumque iusto distinctio totam facilis. Obcaecati
           minima at magni eligendi ip sum hic officia iure ipsam? */}
         </p>
-        <Link class="btn button" to="/modelbrowser">
+        <Link class="btn button" to="/main/modelbrowser">
           Find More
         </Link>
       </div>
@@ -63,12 +63,12 @@ const Home = () => {
       </div>
       <div id="pagination">
         <div id="leftBtn">
-          <Link to="/viewer/62e97d178d90341437d3110c">
+          <Link to="/main/viewer/62e97d178d90341437d3110c">
             <i class="fas fa-angle-left"></i>
           </Link>
         </div>
         <div id="rightBtn">
-          <Link to="//viewer/62e980868d90341437d3111c">
+          <Link to="/main/viewer/62e980868d90341437d3111c">
             <i class="fas fa-angle-right"></i>
           </Link>
         </div>
