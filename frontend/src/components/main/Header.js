@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AppContext } from "../AppContext";
+import { AppContext } from "../../AppContext";
 const Header = () => {
   const url = "http://localhost:5000";
   const [currentUser , setCurrentUser]=  useState(JSON.parse(sessionStorage.getItem('user')))
@@ -54,19 +54,19 @@ const Header = () => {
             </li>
           <li class="nav-item">
               
-              <NavLink className="nav-link " aria-current="page" to="/modelbrowser">
+              <NavLink className="nav-link " aria-current="page" to="/main/modelbrowser">
                   Models
                 </NavLink>
             </li>
           <li class="nav-item">
               
-              <NavLink className="nav-link " aria-current="page" to="/login">
+              <NavLink className="nav-link " aria-current="page" to="/main/login">
                   Log In
                 </NavLink>
             </li>
           <li class="nav-item">
               
-              <NavLink className="nav-link " aria-current="page" to="/signup">
+              <NavLink className="nav-link " aria-current="page" to="/main/signup">
                   Signup
                 </NavLink>
             </li>
@@ -102,7 +102,7 @@ const Header = () => {
 
 
 
-          <Link  class="nav-item me-3" to="/addmodel">
+          <Link  class="nav-item me-3" to="/main/addmodel">
           <i class="fa-solid fa-upload"></i>
           </Link>
           {/* <a class="text-reset me-3" href="#">
@@ -172,7 +172,7 @@ const Header = () => {
               // currentUser=== null?
               !loggedIn?
               <li className="nav-item">
-                <NavLink className="btn btn-primary" to="/login">Login Now</NavLink>
+                <NavLink className="btn btn-primary" to="/main/login">Login Now</NavLink>
               </li>
               :
               <button onClick={logout} className="btn btn-danger">Logout</button>

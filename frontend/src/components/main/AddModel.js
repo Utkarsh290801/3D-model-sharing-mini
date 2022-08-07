@@ -27,14 +27,11 @@ const AddModel = () => {
     file: "",
   };
   const modelCategories = [
-    "Vehicle",
-    "Character",
-  "Education",
-    "Lifestyle",
-    "Science",
-    "Society",
-    "Tech",
-    "Business"
+   " Cars & Vehicles 3D Models",
+   "Characters & Creatures 3D Models",
+   "Architecture 3D Models",
+   "Electronics & Gadgets 3D Models",
+   "Animals & Pets 3D Models"
   ];
 
   const addSubmit = async (formdata) => {
@@ -57,7 +54,7 @@ const AddModel = () => {
         text: "Model added Successfully!! 👍👍",
       });
       response.json().then(data => {
-        navigate('/viewer/'+data._id);   
+        navigate('/main/viewer/'+data._id);   
         
       })
     } else {
