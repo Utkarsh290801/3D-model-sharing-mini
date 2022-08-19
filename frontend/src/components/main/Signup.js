@@ -98,12 +98,12 @@ const Signup = () => {
                 <div className="">
                   <div className="card-body">
                     {/* <model-viewer
-                      src={url + "/nissan_240z_rocket_bunny/scene.gltf"}
+                      src={url + "/spaceskull_-_skullchaser/scene.gltf"}
                       alt="model robot"
                       auto-rotate
                       camera-controls
                       ar
-                      ios-src={url + "/nissan_240z_rocket_bunny/scene.gltf"}
+                      ios-src={url + "/spaceskull_-_skullchaser/scene.gltf"}
                     ></model-viewer> */}
                     <h4 style={{ textAlign: "center", marginTop: "2%" }}>
                       <i style={{ top: "" }}>OR</i>

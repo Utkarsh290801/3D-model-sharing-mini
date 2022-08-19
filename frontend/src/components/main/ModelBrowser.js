@@ -53,12 +53,12 @@ const ModelBrowser = () => {
   return (
     <div style={{ background: "#7f9ead"}}>
       {/* style={{ background: "#7f9ead"}} */}
-      <div className="container " style={{ padding: "5rem" }}>
+      <div className="container " style={{ padding: "4rem" }}>
         
           <div className="btn-toolbar " style={{float:"",marginLeft:"35%",marginTop:"-3%",display:"flex"}}>
                       <button
                         className="btn "
-                        style={{ marginRight: "3%" ,marginLeft:"15%",}}
+                        style={{ marginRight: "3%" ,marginLeft:"15%",color:"black"}}
                         onClick={(e) => filterCategory("Characters & Creatures 3D Models")}
                       >
                         Characters & Creatures 3D Models
@@ -66,7 +66,7 @@ const ModelBrowser = () => {
                       
                       <button
                         className="btn "
-                        // style={{ marginRight: "3%" }}
+                        style={{ color:"black" }}
                         onClick={(e) => filterCategory("Cars & Vehicles 3D Models")}
                       >
                        Cars & Vehicles 3D Models
@@ -74,27 +74,35 @@ const ModelBrowser = () => {
                       
                       <button
                         className="btn "
-                        style={{ marginTop: "3%" ,marginLeft:""}}
+                        style={{ marginTop: "3%" ,marginLeft:"",color:"black"}}
                         onClick={(e) => filterCategory("Architecture 3D Models")}
                       >
                       Architecture 3D Models
                       </button>
                       <button
                         className="btn "
-                        style={{ marginTop: "3%",marginLeft:'3%' }}
+                        style={{ marginTop: "3%",marginLeft:'3%' ,color:"black"}}
                         onClick={(e) => filterCategory("Animals & Pets 3D Models")}
                       >
                 Animals & Pets 3D Models
                       </button>
                       <button
                         className="btn "
-                        style={{ marginTop: "3%" ,marginLeft:'2%'}}
+                        style={{ marginTop: "3%" ,marginLeft:'2%',color:"black"}}
                         onClick={(e) => filterCategory("Electronics & Gadgets 3D Models")}
                       >
                Electronics & Gadgets 3D Models
                       </button>
                       
                     </div>
+                    {/* <model-viewer
+                      src={url + "/spaceskull_-_skullchaser/scene.gltf"}
+                      alt="model robot"
+                      auto-rotate
+                      camera-controls
+                      ar
+                      ios-src={url + "/spaceskull_-_skullchaser/scene.gltf"}
+                    ></model-viewer>  */}
         <model-viewer
           src={url + "/Drossel.gltf"}
           alt="model robot"
@@ -115,7 +123,7 @@ const ModelBrowser = () => {
 <form>
     <TextField
       id="search-bar"
-      sx={{ marginLeft: "26%", width: "70%" ,marginTop:"4%"}}
+      sx={{ marginLeft: "26%", width: "70%" ,marginTop:"4%",}}
       className="text "
       onChange={(e) => setFilter(e.target.value)}
       // onInput={(e) => {

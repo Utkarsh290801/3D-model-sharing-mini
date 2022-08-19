@@ -15,23 +15,23 @@ const AddModel = () => {
   const navigate = useNavigate();
   const AddForm = {
     title: "",
-    category:"",
+    category: "",
     description: "",
     size: "",
     triangle: "",
     materials: "",
-    vertices:"",
+    vertices: "",
     uploadedBy: currentUser.username,
     textures: "",
     image: "",
     file: "",
   };
   const modelCategories = [
-   " Cars & Vehicles 3D Models",
-   "Characters & Creatures 3D Models",
-   "Architecture 3D Models",
-   "Electronics & Gadgets 3D Models",
-   "Animals & Pets 3D Models"
+    " Cars & Vehicles 3D Models",
+    "Characters & Creatures 3D Models",
+    "Architecture 3D Models",
+    "Electronics & Gadgets 3D Models",
+    "Animals & Pets 3D Models",
   ];
 
   const addSubmit = async (formdata) => {
@@ -53,10 +53,9 @@ const AddModel = () => {
         title: "Success",
         text: "Model added Successfully!! 👍👍",
       });
-      response.json().then(data => {
-        navigate('/main/viewer/'+data._id);   
-        
-      })
+      response.json().then((data) => {
+        navigate("/main/viewer/" + data._id);
+      });
     } else {
       console.log(response.status);
       console.log("something went wrong");
@@ -107,19 +106,29 @@ const AddModel = () => {
   });
   return (
     <div>
-      <div className="container-fluid pt-5 " style={{background: "#7f9ead"}}>
+      <div className="container-fluid pt-5 " style={{ background: "#7f9ead" }}>
         <div className="row">
           <div className="">
             <div className="col-md-6 col-sm-6 mx-auto">
               <div className="card browser">
-              <div className="card-body">
-                <div className="card-body add">
-                <h1>Upload Your 3D Model</h1>
-                  <Formik initialValues={AddForm} onSubmit={addSubmit} validationSchema={validationSchema}>
-                    {({ values, handleSubmit, handleChange ,errors,touched}) => (
-                      <form onSubmit={handleSubmit}>
-                        <fieldset>
-{/*                          
+                <div className="card-body">
+                  <div className="card-body add">
+                    <h1>Upload Your 3D Model</h1>
+                    <Formik
+                      initialValues={AddForm}
+                      onSubmit={addSubmit}
+                      validationSchema={validationSchema}
+                    >
+                      {({
+                        values,
+                        handleSubmit,
+                        handleChange,
+                        errors,
+                        touched,
+                      }) => (
+                        <form onSubmit={handleSubmit}>
+                          <fieldset>
+                            {/*                          
                           <TextField
                             label="Category"
                             id="category"
@@ -127,71 +136,63 @@ const AddModel = () => {
                             onChange={handleChange}
                             className="w-100 mb-4 mt-3"
                           /> */}
-                          <TextField
-                            label="Title"
-                            id="title"
-                            value={values.title}
-                            onChange={handleChange}
-                            className="w-100 mb-4 mt-3"
-                            helperText={touched.title ? errors.title : ""}
-                            error={Boolean(errors.title && touched.title)}
-                          />
-                           {/* <FormControl>
-                    <InputLabel id="demo-simple-select-label">
-                      Select category
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="category"
-                      name="category"
-                      value={values.category}
-                      error={Boolean(errors.category && touched.category)}
-                      // helperText="Category is required"
-                      helperText={touched.category ? errors.category : ""}
-                      label="Select category"
-                      onChange={handleChange}
-                    >
-                      {modelCategories.map((category) => (<MenuItem value={category} >{category}</MenuItem>))}
-                      
-                    </Select>
-                  </FormControl> */}
-                          <TextField
-                            label="Description"
-                            id="description"
-                            value={values.description}
-                            onChange={handleChange}
-                            className="w-100 mb-4"
-                            helperText={touched.description ? errors.description : ""}
-                            error={Boolean(errors.description && touched.description)}
-                          />
-                          <TextField
-                            label="Size"
-                            id="size"
-                            value={values.size}
-                            onChange={handleChange}
-                            className="w-100 mb-4"
-                          />
-                          <TextField
-                            label="Triangle"
-                            id="triangle"
-                            value={values.triangle}
-                            onChange={handleChange}
-                            className="w-100 mb-4"
-                          />
-                          <TextField
-                            label="Vertices"
-                            id="vertices"
-                            value={values.vertices}
-                            onChange={handleChange}
-                            className="w-100 mb-4"
-                          />
-                          <TextField
-                            label="Materials"
-                            id="materials"
-                            value={values.materials}
-                            onChange={handleChange}
-                            className="w-100 mb-4"
-                          />
+                            <TextField
+                              label="Title"
+                              id="title"
+                              value={values.title}
+                              onChange={handleChange}
+                              className="w-100 mb-4 mt-3"
+                              helperText={touched.title ? errors.title : ""}
+                              error={Boolean(errors.title && touched.title)}
+                            />
+
+                            {/*                  iss code m error aa rhi h sir    
+                                                ye code select category wala h        
+                                                isse uncomment krne p code add model form ni dikh raha h                                                              */}
+                            {/* <FormControl> */}
+                             
+
+                            <TextField
+                              label="Description"
+                              id="description"
+                              value={values.description}
+                              onChange={handleChange}
+                              className="w-100 mb-4"
+                              helperText={
+                                touched.description ? errors.description : ""
+                              }
+                              error={Boolean(
+                                errors.description && touched.description
+                              )}
+                            />
+                            <TextField
+                              label="Size"
+                              id="size"
+                              value={values.size}
+                              onChange={handleChange}
+                              className="w-100 mb-4"
+                            />
+                            <TextField
+                              label="Triangle"
+                              id="triangle"
+                              value={values.triangle}
+                              onChange={handleChange}
+                              className="w-100 mb-4"
+                            />
+                            <TextField
+                              label="Vertices"
+                              id="vertices"
+                              value={values.vertices}
+                              onChange={handleChange}
+                              className="w-100 mb-4"
+                            />
+                            <TextField
+                              label="Materials"
+                              id="materials"
+                              value={values.materials}
+                              onChange={handleChange}
+                              className="w-100 mb-4"
+                            />
                             <TextField
                               label="Textures"
                               id="textures"
@@ -199,38 +200,63 @@ const AddModel = () => {
                               onChange={handleChange}
                               className="w-100 mb-4"
                             />
-                          {/* <TextField
+                            {/* <TextField
                             label="UploadedBy"
                             id="uploadedBy"
                             value={values.uploadedBy}
                             onChange={handleChange}
                             className="w-100 mb-4"
                           /> */}
+ <InputLabel id="demo-simple-select-label">
+                                Select category
+                              </InputLabel>
+                       
+                              <select
+                                labelId="demo-simple-select-label"
+                                id="category"
+                                name="category"
+                                className="form-control mb-2"
+                                label="Select category"
 
-                          <label>Uploade Image</label>
-                          <input
-                            className="form-control"
-                            type="file"
-                            onChange={uploadImage}
-                          />
+                                value={values.category}
+                                error={Boolean(
+                                  errors.category && touched.category
+                                )}
+                                // helperText="Category is required"
+                                helperText={
+                                  touched.category ? errors.category : ""
+                                }
+                                onChange={handleChange}
+                              >
+                                {modelCategories.map((category) => (
+                                  <option value={category}>{category}</option>
+                                ))}
+                              </select>
+                            {/* </FormControl> */}
+                            <label>Uploade Image</label>
+                            <input
+                              className="form-control"
+                              type="file"
+                              onChange={uploadImage}
+                            />
 
-                          <label>Uploade File</label>
-                          <input
-                            className="form-control"
-                            type="file"
-                            onChange={uploadFile}
-                          />
+                            <label>Uploade File</label>
+                            <input
+                              className="form-control"
+                              type="file"
+                              onChange={uploadFile}
+                            />
 
-                          <button className="btn btn-primary model w-100 mt-5">
-                           <h3> Submit Model</h3>
-                          </button>
-                        </fieldset>
-                      </form>
-                    )}
-                  </Formik>
+                            <button className="btn btn-primary model w-100 mt-5">
+                              <h3> Submit Model</h3>
+                            </button>
+                          </fieldset>
+                        </form>
+                      )}
+                    </Formik>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
